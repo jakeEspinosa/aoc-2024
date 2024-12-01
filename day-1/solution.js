@@ -52,7 +52,22 @@ const main = async () => {
     ans += getDistance(firstNumsSorted.at(i), secondNumsSorted.at(i));
   }
 
-  console.log(ans);
+  const counter = {};
+  for (const num of secondNumsSorted) {
+    if (num in counter)
+      counter[num] += 1
+    else
+      counter[num] = 1;
+  }
+
+  let similarityScore = 0;
+  for (const num of firstNumsSorted) {
+    if (num in counter)
+      similarityScore += (num * counter[num])
+  }
+
+  console.log(`Total distance: ${ans}`);
+  console.log(`Similarity score: ${similarityScore}`);
 };
 
 main();
