@@ -1,8 +1,3 @@
-/* 
-sort the two lists
-compare them, find the differences, and add to res
-return res
-*/
 const fs = require("node:fs");
 const readline = require("node:readline");
 
@@ -43,10 +38,21 @@ const processInput = async (path) => {
   return [firstNums, secondNums];
 };
 
+const getDistance = (firstNum, secondNum) => {
+  return Math.abs(firstNum - secondNum);
+}
+
 const main = async () => {
   const [firstNums, secondNums] = await processInput(PATH);
   const firstNumsSorted = firstNums.toSorted();
   const secondNumsSorted = secondNums.toSorted();
+  let ans = 0;
+
+  for (let i = 0; i < firstNums.length; i++) {
+    ans += getDistance(firstNumsSorted.at(i), secondNumsSorted.at(i));
+  }
+
+  console.log(ans);
 };
 
 main();
