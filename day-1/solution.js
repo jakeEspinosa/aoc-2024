@@ -14,10 +14,10 @@ const splitLine = (line) => {
   let isInSecondNum = false;
 
   for (const c of line) {
-    if (c === " ") 
+    if (c === " ")
       isInSecondNum = true;
     else
-      if (isInSecondNum === false) 
+      if (isInSecondNum === false)
         firstNum += c;
       else
         secondNum += c;
@@ -45,6 +45,8 @@ const processInput = async (path) => {
 
 const main = async () => {
   const [firstNums, secondNums] = await processInput(PATH);
+  const firstNumsSorted = firstNums.toSorted();
+  const secondNumsSorted = secondNums.toSorted();
 };
 
 main();
